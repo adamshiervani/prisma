@@ -1,4 +1,4 @@
-triggers: [ push ]
+triggers: [push]
 name: Benchmark
 images:
   prisma_benchmark:
@@ -21,11 +21,9 @@ tasks:
   - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
   - npm i -g pnpm
   - apt-get -qy install openssl
+  - openssl version
   - pnpm i
   - pnpm run setup
   # This is required as setup can modify pnpm-lock.yml
   - rm -f ./pnpm-lock.yaml
-  - ls /workspace/packages/client/src/__tests__/benchmarks/huge-schema
-  - ls /workspace/packages/client/src/__tests__/benchmarks/huge-schema/node_modules
-  - ls /workspace/packages/client/src/__tests__/benchmarks/huge-schema/node_modules/.prisma
   - pnpm run bench
