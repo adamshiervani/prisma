@@ -1,0 +1,22 @@
+triggers: [ push ]
+name: Benchmark
+images:
+  prisma_benchmark:
+    base_image: ubuntu-22.04-bare
+    tasks:
+      - curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=7 sh -
+      - npm i --silent -g pnpm@7 --unsafe-perm
+      - pnpm i
+
+    rebuild:
+      on_base_image_change: true
+      on_file_change:
+        - 'pnpm-lock.yaml'
+
+executor:
+  image: prisma_benchmark
+  hardware: x86-2vcpu
+
+tasks:
+  - pnpm run setup
+  - pnpm run bench
