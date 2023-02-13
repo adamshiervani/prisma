@@ -5,8 +5,8 @@ images:
     base_image: ubuntu-22.04-bare
     tasks:
       - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
-      - curl -fsSL https://get.pnpm.io/install.sh
-      - npm i --silent -g pnpm@7 --unsafe-perm
+      - curl -fsSL https://get.pnpm.io/install.sh | sh -
+      - npm i -g pnpm@7 --unsafe-perm
       - pnpm i
 
     rebuild:
