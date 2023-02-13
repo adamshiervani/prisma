@@ -22,7 +22,7 @@ tasks:
   - npm i -g pnpm
   - apt-get -qy install openssl
   - openssl version
-  - pnpm i
+  - CI=true SKIP_GIT=true bash .github/workflows/scripts/setup.sh
   - pnpm run setup
   # This is required as setup can modify pnpm-lock.yml
   - rm -f ./pnpm-lock.yaml
