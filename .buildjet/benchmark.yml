@@ -4,8 +4,8 @@ images:
   prisma_benchmark:
     base_image: ubuntu-22.04-bare
     tasks:
+      - touch .bashrc
       - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-      - ". ~/.nvm/nvm.sh"
       - curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=v7.27.0 sh -
       - npm i --silent -g pnpm@7 --unsafe-perm
       - pnpm i
