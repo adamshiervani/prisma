@@ -25,4 +25,5 @@ tasks:
   - pnpm run setup
   # This is required as setup can modify pnpm-lock.yml
   - rm -f ./pnpm-lock.yaml
+  - ls /workspace/packages/client/src/__tests__/benchmarks/huge-schema/node_modules/.prisma/client
   - pnpm run bench
