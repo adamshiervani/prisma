@@ -2,7 +2,7 @@ triggers: [push]
 name: Benchmark
 images:
   prisma_benchmark:
-    base_image: ubuntu-22.04-bare
+    base_image: ubuntu-22.04-github
     tasks:
       #      - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
       #      - npm i -g pnpm@7 --unsafe-perm
