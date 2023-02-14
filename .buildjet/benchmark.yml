@@ -14,10 +14,10 @@ images:
 
 executor:
   image: prisma_benchmark
-  hardware: x86-4vcpu
+  hardware: x86-8vcpu
 
 tasks:
-  - pnpm -r build
+  - pnpm -r build --workspace-concurrency=0
   # This is required as setup can modify pnpm-lock.yml
   - rm -f ./pnpm-lock.yaml
   - pnpm run bench
