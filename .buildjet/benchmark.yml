@@ -14,7 +14,7 @@ images:
 
 executor:
   image: prisma_benchmark
-  hardware: x86-2vcpu
+  hardware: x86-4vcpu
 
 tasks:
   - pnpm -r build
