@@ -4,10 +4,10 @@ images:
   prisma_benchmark:
     base_image: ubuntu-22.04-github
     tasks:
-      #      - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
-      #      - npm i -g pnpm@7 --unsafe-perm
-      #      - pnpm i
-      - echo hello
+      - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
+      - npm i -g pnpm@7 --unsafe-perm
+      - pnpm i
+
     rebuild:
       on_base_image_change: true
       on_file_change:
@@ -18,8 +18,7 @@ executor:
   hardware: x86-2vcpu
 
 tasks:
-  - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
-  - CI=true SKIP_GIT=true bash .github/workflows/scripts/setup.sh
   # This is required as setup can modify pnpm-lock.yml
+  - pnpm run setup
   - rm -f ./pnpm-lock.yaml
   - pnpm run bench
