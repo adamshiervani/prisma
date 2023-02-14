@@ -5,8 +5,7 @@ import path from 'path'
 
 async function main() {
   // this is for when you want to use it locally
-  // const buildOnly = process.argv[2] === '--build' // can we remove this?
-  const buildOnly = true
+  const buildOnly = process.argv[2] === '--build' // can we remove this?
 
   if (process.env.BUILDKITE_TAG && !process.env.RELEASE_PROMOTE_DEV) {
     throw new Error(`When providing BUILDKITE_TAG, you also need to provide the env var RELEASE_PROMOTE_DEV, which
@@ -40,7 +39,7 @@ has to point to the dev version you want to promote, for example 2.1.0-dev.123`)
   }
 
   // TODO: separate into utils shared between publish & setup
-  if (buildOnly) {
+  if (!buildOnly) {
     console.debug(`Installing dependencies`)
     await run('.', `pnpm i`).catch((e) => {
       console.error(e)

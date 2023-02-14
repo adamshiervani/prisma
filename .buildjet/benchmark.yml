@@ -7,7 +7,6 @@ images:
       - curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
       - npm i -g pnpm@7 --unsafe-perm
       - pnpm i
-
     rebuild:
       on_base_image_change: true
       on_file_change:
@@ -18,7 +17,7 @@ executor:
   hardware: x86-2vcpu
 
 tasks:
+  - pnpm -r build
   # This is required as setup can modify pnpm-lock.yml
-  - pnpm run setup
   - rm -f ./pnpm-lock.yaml
   - pnpm run bench
